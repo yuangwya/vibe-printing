@@ -1,0 +1,30 @@
+{
+  "description": "Bambu Lab X2D with a 0.4 mm nozzle and PLA; edit or copy this file to change printers.",
+  "bambu_studio": {
+    "executable": "/Applications/BambuStudio.app/Contents/MacOS/BambuStudio",
+    "profiles_directory": "/Applications/BambuStudio.app/Contents/Resources/profiles/BBL",
+    "open_command": ["open", "-a", "/Applications/BambuStudio.app", "{file}"]
+  },
+  "presets": {
+    "machine": "Bambu Lab X2D 0.4 nozzle",
+    "process": "0.20mm Standard @BBL X2D",
+    "filament": "Bambu PLA Basic @BBL X2D 0.4 nozzle"
+  },
+  "bed_type": "Textured PEI Plate",
+  "overrides": {
+    "machine": {},
+    "process": {
+      "layer_height": "0.2",
+      "sparse_infill_density": "15%",
+      "wall_loops": "2",
+      "enable_support": "0"
+    },
+    "filament": {}
+  },
+  "open_after_slice": true,
+  "slice_timeout_seconds": 300,
+  "material_cost": {
+    "price_per_kg": null,
+    "currency": "CNY"
+  }
+}
