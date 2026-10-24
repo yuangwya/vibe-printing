@@ -1,6 +1,6 @@
-# vibe-printing
+# Vibe Printing
 
-Turn ideas into printable objects with Python and CadQuery.
+Turn ideas into printable objects with CadQuery.
 
 vibe-printing is a lightweight workspace for experimenting with parametric 3D
 models, including designs created and refined with a coding assistant. Describe
@@ -73,11 +73,12 @@ The included model supports a centered phone in portrait or landscape:
 - A 100 × 110 mm base and two triangular rear braces support a backrest tilted
   65 degrees above the desk (25 degrees back from vertical).
 - A 76 mm wide backrest and sloped seat support the phone, while a 10 mm front
-  lip prevents its bottom edge from sliding forward.
+  lip prevents its bottom edge from sliding forward. The seat and lip form one
+  continuous profile, with the front wall extending down into the base.
 - The seat provides 16 mm of clearance perpendicular to the backrest. The
   design was checked against centered rectangular phone envelopes from
   130 × 60 × 8 mm to 190 × 90 × 14 mm, including the case, in both orientations.
-- The backrest, seat, front lip, and braces have 1.2 mm edge fillets. The base
+- The backrest, front lip's upper rim, and braces have 1.2 mm edge fillets. The base
   has rounded corners and a rounded upper rim.
 - Raised **Made by WYA** lettering sits on the front of the base, extending
   0.6 mm beyond its face. Overall dimensions are approximately

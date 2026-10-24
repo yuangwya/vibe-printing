@@ -72,12 +72,12 @@ def build_model() -> cq.Workplane:
         point(bottom, 0), point(BACK_LENGTH, 0),
         point(BACK_LENGTH, -BACK_THICKNESS), point(bottom, -BACK_THICKNESS),
     ]
-    front = point(0, PHONE_CLEARANCE + LIP_THICKNESS)
+    front_foot_y = point(-2, PHONE_CLEARANCE + LIP_THICKNESS)[0]
     rear_seat = point(0, -BACK_THICKNESS)
     top_rear = point(BACK_LENGTH - 2, -BACK_THICKNESS / 2)
     rear_foot = BASE_DEPTH / 2 - REAR_MARGIN
     if not (
-        front[0] > -BASE_DEPTH / 2 + BASE_CORNER_RADIUS
+        front_foot_y > -BASE_DEPTH / 2 + BASE_CORNER_RADIUS
         and max(y for y, _ in back_profile) < rear_foot
         and min(z for _, z in back_profile) >= 0
     ):
@@ -91,19 +91,16 @@ def build_model() -> cq.Workplane:
     )
     # Round the whole backrest, including its upper rim and side corners.
     back = prism(back_profile, BACK_WIDTH).edges().fillet(EDGE_RADIUS)
-    # A filled ramp supports the phone's bottom edge perpendicular to the backrest.
-    ramp = prism([
-        (front[0], BASE_THICKNESS - 2), front, rear_seat,
-        (rear_seat[0], BASE_THICKNESS - 2),
-    ], BACK_WIDTH).edges().fillet(EDGE_RADIUS)
-    # Embed the rounded lip below the ramp surface for a reliable solid union.
-    lip = prism([
-        point(-2, PHONE_CLEARANCE), point(LIP_HEIGHT, PHONE_CLEARANCE),
+    # Make the seat and lip as one profile, with the front wall reaching the base.
+    # This removes the separate lip's projecting lower edge and rounded seam.
+    cradle = prism([
+        (front_foot_y, BASE_THICKNESS - 2),
+        (rear_seat[0], BASE_THICKNESS - 2), rear_seat,
+        point(0, PHONE_CLEARANCE), point(LIP_HEIGHT, PHONE_CLEARANCE),
         point(LIP_HEIGHT, PHONE_CLEARANCE + LIP_THICKNESS),
-        point(-2, PHONE_CLEARANCE + LIP_THICKNESS),
-    ], BACK_WIDTH).edges().fillet(EDGE_RADIUS)
+    ], BACK_WIDTH).faces(">Z").edges().fillet(EDGE_RADIUS)
 
-    model = base.union(back).union(ramp).union(lip)
+    model = base.union(back).union(cradle)
     # Two triangular rear braces transfer the backrest load into the deep base.
     brace_profile = [
         (SEAT_BACK_Y, BASE_THICKNESS - 2),
