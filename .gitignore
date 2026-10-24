@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+# Keep exports locally; regenerate them from the model source.
+models/*/exports/*
+!models/*/exports/.gitkeep
