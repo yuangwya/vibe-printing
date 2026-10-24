@@ -70,19 +70,46 @@ files are the source of truth; rebuild exports after changing a design.
 
 The included model supports a centered phone in portrait or landscape:
 
-- A 100 × 110 mm base and two triangular rear braces support a backrest tilted
+- A 90 × 100 × 4.5 mm base and one central triangular rear brace support a backrest tilted
   65 degrees above the desk (25 degrees back from vertical).
-- A 76 mm wide backrest and sloped seat support the phone, while a 10 mm front
+- A 70 mm wide, 4 mm thick backrest and sloped seat support the phone, while an 8 mm front
   lip prevents its bottom edge from sliding forward. The seat and lip form one
   continuous profile, with the front wall extending down into the base.
 - The seat provides 16 mm of clearance perpendicular to the backrest. The
   design was checked against centered rectangular phone envelopes from
   130 × 60 × 8 mm to 190 × 90 × 14 mm, including the case, in both orientations.
-- The backrest, front lip's upper rim, and braces have 1.2 mm edge fillets. The base
+- The backrest, front lip's upper rim, and brace have 1 mm edge fillets. The base
   has rounded corners and a rounded upper rim.
+- A pointed backrest window and two rounded base windows reduce material while
+  retaining the side rails, perimeter, and central spine beneath the rear brace.
+  The pointed window roof avoids a long horizontal bridge.
 - Raised **Made by WYA** lettering sits on the front of the base, extending
   0.6 mm beyond its face. Overall dimensions are approximately
-  100 × 110.6 × 102.2 mm.
+  90 × 100.6 × 84.2 mm.
+
+This simplified version uses a thinner frame base, a shorter open backrest, and
+a single rear brace. CAD solid volume is approximately 60.1 cm³, compared with
+162.5 cm³ for the previous version.
+
+A local Bambu Studio 02.08.02.61 comparison used the bundled X2D 0.4 mm nozzle
+profile, its default 0.20 mm Standard process, Bambu PLA Basic, Textured PEI Plate,
+two walls, 15% infill, and supports disabled. Both models were sliced upright
+with the same settings:
+
+| Estimate | Previous version | Simplified frame |
+| --- | ---: | ---: |
+| Filament | 76.10 g | 38.96 g |
+| Total time, including preparation | 1 h 35 min 41 s | 1 h 10 min 15 s |
+
+Estimated material use is 51.2% of the previous version; estimated total time
+is 73.4%. Material cost at the same price per kilogram is therefore close to
+half, but total cost including electricity, equipment, and labor is not proven
+to be half. Material cost equals `38.96 / 1000 * price_per_kg` for this preset.
+These are slicer estimates, not measurements from a physical print. The CLI
+completed both slices but logged `Invalid T command` warnings for `T65279` and
+`T65535` in the bundled start/end sequence. The generated G-code is used only
+for this comparison; re-slice the STL in your normal printer project before
+printing. Details are recorded in `models/phone-stand/print-estimate.json`.
 
 The envelope checks verify geometric clearance and that the gravity projection
 of a uniform, centered phone falls inside the base footprint on a level desk.

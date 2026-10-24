@@ -1,0 +1,41 @@
+{
+  "description": "Comparative slicer estimates, not measured print results or a print-ready job.",
+  "printer": "Bambu Lab X2D",
+  "nozzle_mm": 0.4,
+  "filament_assumption": "Bambu PLA Basic",
+  "slicer": "Bambu Studio 02.08.02.61",
+  "process": "0.20mm Standard @BBL X2D",
+  "layer_height_mm": 0.2,
+  "infill_percent": 15,
+  "wall_loops": 2,
+  "supports_enabled": false,
+  "bed_type": "Textured PEI Plate",
+  "orientation": "Upright, base on XY plane",
+  "source_sha256": "829deb03a9c02cbc86bab27b92c49904242b6bc6deabe358b0c2320b7de68b19",
+  "stl_sha256": "1ace281d0fb275489bd2da8f8b931fc7be1184915bc894367324bf9a54c8acee",
+  "baseline": {
+    "filament_g": 76.1,
+    "estimated_total_seconds": 5741,
+    "support_used": false
+  },
+  "simplified_frame": {
+    "filament_g": 38.96,
+    "estimated_total_seconds": 4215,
+    "support_used": false
+  },
+  "filament_ratio": 0.5119579500657031,
+  "estimated_time_ratio": 0.7341926493642222,
+  "material_cost_formula": "filament_g / 1000 * price_per_kg",
+  "limitations": [
+    "The filament choice is an assumption; the user specified the X2D printer and default print settings.",
+    "No physical strength, friction, or actual printing cost measurements have been made.",
+    "The stock CLI logged Invalid T command warnings for T65279 and T65535 in both jobs; G-code was not sent to a printer.",
+    "Material cost is approximately halved. Total cost depends on power, equipment, labor, failures, and actual filament price.",
+    "The previous model was reconstructed and checked against its original CAD volume of 162495.55058051905 mm3."
+  ],
+  "profile_sha256": {
+    "machine": "fe64f3621015ae8299835a59643baa57283864ca3a52bb2f2507c101ef99073d",
+    "process": "1b558e39441396af3d1beef2b6333d7839aa4be9964bbbed75b10bfb0059ba0a",
+    "filament": "b9b943ce0d59a27ea74ae2261246deb2f932ca98a36db33e1e18e4daf49b80d8"
+  }
+}
