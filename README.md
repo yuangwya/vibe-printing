@@ -79,21 +79,6 @@ Copy the configuration for another setup and select it with:
 python scripts/bambu.py phone-stand --config configs/another-printer.json
 ```
 
-## Included model
-
-The phone stand is a lightweight frame with a 65° backrest, rear brace, rounded
-contact edges, an integrated front lip, and **Made by WYA** lettering. It supports
-centered portrait and landscape placement, with 16 mm phone/case clearance.
-Overall dimensions are approximately **90 × 100.6 × 84.2 mm**.
-
-The recorded X2D standard-preset estimate is **38.96 g** and **1 h 10 min 15 s**,
-including preparation. These are estimates, not measured print results or a
-strength guarantee. Settings and comparison details are in
-[print-estimate.json](models/phone-stand/print-estimate.json).
-Review slicing diagnostics and the layer preview, then test the physical fit,
-stability, and strength. The bundled start/end sequence has emitted CLI
-`Invalid T command` diagnostics; retain and review `exports/slice.log`.
-
 ## Repository layout and extension
 
 | Path | Purpose |
