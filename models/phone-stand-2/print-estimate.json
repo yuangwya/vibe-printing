@@ -1,0 +1,8 @@
+{
+  "status": "design_preview_only",
+  "model": "phone-stand-2",
+  "description": "This revision has not been exported, sliced, or print tested. Estimates copied from phone-stand do not apply.",
+  "previous_model_estimate": "../phone-stand/print-estimate.json",
+  "source_sha256": "012e9a7333eac74a5cdf3d98dbbb0085f226ec7b56dd1c2701a6a4e102860a2c",
+  "copied_exports_are_stale": true
+}

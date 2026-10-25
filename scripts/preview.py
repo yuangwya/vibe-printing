@@ -99,11 +99,12 @@ def stop_viewer(process: subprocess.Popen) -> None:
         process.wait()
 
 
-def render(path: Path, show) -> bool:
+def render(path: Path, show, color: str | None = None) -> bool:
     try:
         model = load_model(path)
         summary = validate_model(model)
-        show(model, names=[path.parent.name])
+        options = {"colors": [color]} if color else {}
+        show(model, names=[path.parent.name], **options)
         print(f"[PREVIEW] {path.parent.name}: {summary}", flush=True)
         return True
     except Exception as exc:
@@ -118,6 +119,7 @@ def main() -> None:
     parser.add_argument("--vscode", action="store_true", help="Use an existing OCP CAD Viewer instead of starting a browser viewer")
     parser.add_argument("--port", type=int, default=3939, help="Viewer port (default: 3939)")
     parser.add_argument("--no-browser", action="store_true", help="Do not open the browser automatically")
+    parser.add_argument("--color", help="Preview color, for example '#FFD51C'; does not set filament color")
     args = parser.parse_args()
     if not 1 <= args.port <= 65535:
         parser.error("Port must be between 1 and 65535")
@@ -149,19 +151,19 @@ def main() -> None:
             connected.clear()
         set_port(args.port)
         previous = source_bytes(path)
-        success = render(path, show)
+        success = render(path, show, args.color)
         if not success and not args.watch:
             raise SystemExit(1)
         if args.watch:
             print(f"[WATCH] {path} (Ctrl+C to stop). Failed builds keep the last valid preview.", flush=True)
             for _ in wait_for_changes(path, previous, connected, process):
-                render(path, show)
+                render(path, show, args.color)
         elif process is not None:
             print("[READY] Preview is running. Press Ctrl+C to close the viewer.", flush=True)
             while process.poll() is None:
                 if connected.wait(timeout=0.2):
                     connected.clear()
-                    render(path, show)
+                    render(path, show, args.color)
             raise RuntimeError("The viewer stopped. Restart the preview command.")
     except KeyboardInterrupt:
         print("\n[STOP] Preview stopped.", flush=True)
